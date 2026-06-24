@@ -10,8 +10,10 @@ import { Mail, MailOpen } from "@lucide/astro"
 				<h1>sahana.dev</h1>
 				<a href="mailto:contact@sahana.dev">
                     <div id="mail">
-                        <Mail class="mail-icon mail-closed" />
-                        <MailOpen class="mail-icon mail-open" />
+                        <span id="mail-container">
+                            <Mail class="mail-icon mail-closed" />
+                            <MailOpen class="mail-icon mail-open" />
+                        </span>
                         <span id="mail-user">contact</span>@sahana.dev
                     </div>
 				</a>
@@ -38,10 +40,19 @@ import { Mail, MailOpen } from "@lucide/astro"
 		align-items: center;
 	}
 	
-	.mail-icon {
-		flex: 0 0 auto;
+	#mail-container {
+		display: inline-grid;
+		place-items: center;
+		width: 1em;
+		height: 1em;
 		margin-right: 1ch;
-        display: inline;
+		flex: 0 0 auto;
+	}
+	
+	.mail-icon {
+		grid-area: 1 / 1;
+		width: 1em;
+		height: 1em;
 	}
 
 	#mail-user {
@@ -51,15 +62,19 @@ import { Mail, MailOpen } from "@lucide/astro"
 	}
 	
 	.mail-open {
-		display: none;
+		opacity: 0;
+		/* Within the shared 24x24 viewBox, mail-open's envelope body bottom
+		   sits at y=22 vs mail's rect bottom at y=20, so its visual bottom
+		   renders 2/24em lower. Shift it up to keep the bottom edge aligned. */
+		transform: translateY(calc(-2em / 24));
 	}
 	
 	#mail:hover .mail-closed {
-		display: none;
+		opacity: 0;
 	}
 	
 	#mail:hover .mail-open {
-		display: block;
+		opacity: 1;
 	}
 </style>
 
