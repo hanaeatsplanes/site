@@ -12,7 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@lucide/astro": "^1.21.0",
     "@webtui/css": "^0.1.9",
+    "@webtui/plugin-nf": "^0.1.2",
     "astro": "^7.0.2"
   },
   "devDependencies": {

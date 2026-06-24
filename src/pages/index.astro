@@ -1,11 +1,89 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { Mail, MailOpen } from "@lucide/astro"
 ---
 
 <Layout>
-	<Welcome />
+	<div style="display: grid; grid-template-columns: 1fr 2fr; min-height: 100vh;">
+		<div style="display: grid; grid-template-rows: 1fr 2fr;">
+			<div box-="square" id="contact" style="display: flex; flex-direction: column; align-items: center;">
+				<h1>sahana.dev</h1>
+				<a href="mailto:contact@sahana.dev">
+                    <div id="mail">
+                        <Mail class="mail-icon mail-closed" />
+                        <MailOpen class="mail-icon mail-open" />
+                        <span id="mail-user">contact</span>@sahana.dev
+                    </div>
+				</a>
+			</div>
+			<div box-="square" id="projects">2</div>
+		</div>
+		<div box-="square" id="main">3</div>
+	</div>
 </Layout>
+
+<style>
+	#contact {
+		display: flex;
+		justify-content: center;
+	}
+	#contact h1 {
+		font-size: 2rem;
+		font-style: italic;
+		margin-top: 1lh;
+	}
+	
+	#mail {
+		display: inline-flex;
+		align-items: center;
+	}
+	
+	.mail-icon {
+		flex: 0 0 auto;
+		margin-right: 1ch;
+        display: inline;
+	}
+
+	#mail-user {
+		display: inline-block;
+		text-align: right;
+		width: 8ch;
+	}
+	
+	.mail-open {
+		display: none;
+	}
+	
+	#mail:hover .mail-closed {
+		display: none;
+	}
+	
+	#mail:hover .mail-open {
+		display: block;
+	}
+</style>
+
+<script>
+	const mail = document.getElementById("mail")
+	const mailUser = document.getElementById("mail-user")
+	const potentialUsers = [
+		"sahana",
+		"contact",
+		"XDDCC",
+		"aasdg",
+		"implodes",
+		"waffles",
+		"*",
+	]
+	function changeMailUser() {
+		if (!mailUser) {
+			throw new Error("mailUser (id: mail-user) is missing")
+		}
+		mailUser.textContent = potentialUsers[Math.floor(Math.random() * potentialUsers.length)]
+	}
+
+	if (!mail) {
+		throw new Error("mail (id: mail) is missing")
+	}
+	mail.addEventListener("mouseenter", changeMailUser)
+</script>
