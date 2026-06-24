@@ -1,7 +1,7 @@
-# Astro Starter Kit: Minimal
+# Astro Starter Kit: Basics
 
 ```sh
-bun create astro@latest -- --template minimal
+bun create astro@latest -- --template basics
 ```
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
@@ -13,17 +13,20 @@ Inside of your Astro project, you'll see the following folders and files:
 ```text
 /
 ├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
 ## 🧞 Commands
 
